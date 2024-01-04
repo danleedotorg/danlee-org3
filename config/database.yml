@@ -51,7 +51,7 @@ test:
 #
 production:
   <<: *default
-  url: awseb-e-qj46nbt3ep-stack-awsebrdsdatabase-ulucczs3rci1.cvc484yo4wwq.us-east-1.rds.amazonaws.com
+  url: awseb-e-vsttbb3hhq-stack-awsebrdsdatabase-na08ekbyfjmx.cvc484yo4wwq.us-east-1.rds.amazonaws.com
   username: danleeorg
   database: danleeorg
   password: <%= ENV['DATABASE_PASSWORD'] %>
