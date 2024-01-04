@@ -53,4 +53,4 @@ production:
   url: awseb-e-qj46nbt3ep-stack-awsebrdsdatabase-ulucczs3rci1.cvc484yo4wwq.us-east-1.rds.amazonaws.com
   username: danleeorg
   database: danleeorg
-  password: ENV['DATABASE_PASSWORD']
+  password: <%= ENV['DATABASE_PASSWORD'] %>
