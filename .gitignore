@@ -34,3 +34,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .idea
+
+#https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
