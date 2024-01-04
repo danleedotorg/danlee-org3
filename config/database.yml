@@ -9,17 +9,21 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+
+# by default use remote RDS
 default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: danleedotorg
-  password: somedbpassword
+  host: <%= ENV['RDS_HOST'] %>
+  username: <%= ENV['RDS_DB_USERNAME'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  password: <%= ENV['RDS_DB_PASSWORD'] %>
+  port: 3306
+
 
 development:
   <<: *default
-  database: danlee_org3_development
-  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,6 +31,9 @@ development:
 test:
   <<: *default
   database: danlee_org3_test
+  host: 0.0.0.0
+  username: danleedotorg
+  password: somedbpassword
   socket: /var/run/mysqld/mysqld.sock
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -51,7 +58,3 @@ test:
 #
 production:
   <<: *default
-  url: awseb-e-vsttbb3hhq-stack-awsebrdsdatabase-na08ekbyfjmx.cvc484yo4wwq.us-east-1.rds.amazonaws.com
-  username: danleeorg
-  database: danleeorg
-  password: <%= ENV['DATABASE_PASSWORD'] %>
